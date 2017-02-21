@@ -6,15 +6,13 @@
     </div>
     <div class="content">
     	<div class="title">
-    	  <span class="brand"></span>
-    	  <span class="name">{{seller.name}}</span>
+    	  <span class="brand"></span><span class="name">{{seller.name}}</span>
     	</div>
-    	<div class="discription">
-    		{{seller.description}}/{{seller.deliveryTime}}分钟送达
+    	<div class="description">
+    	  <span class="text">{{seller.description}}/{{seller.deliveryTime}}分钟送达</span>
     	</div>
     	<div v-if="seller.supports" class="support" @click="showDetail">
-    		<span class="icon" :class="classMap[seller.supports[0].type]"></span>
-    		<span class="text">{{seller.supports[0].description}}</span>
+    		<span class="icon" :class="classMap[seller.supports[0].type]"></span><span class="text">{{seller.supports[0].description}}</span>
     	</div>
     </div>
     <div v-if="seller.supports" class="support-count">
@@ -23,8 +21,7 @@
     </div>
   </div>
   <div class="bulletin-wrapper" @click="showDetail">
-  	<span class="bulletin-title"></span>
-    <span class="bulletin-text">{{seller.bulletin}}</span>
+  	<span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
   </div>
   <div class="background">
     <img :src="seller.avatar" width="100%" height="100%">
@@ -116,6 +113,12 @@
             font-size: 16px
             line-height: 18px
             font-weight: bold
+        .description
+          font-size: 12px
+          padding-left: 0px
+          font-weight: 200
+          line-height: 12px
+          margin: 8px 0px 10px 0px
         .support
           .icon
             display: inline-block
@@ -134,6 +137,10 @@
               bg-image('invoice_1')
             &.special
               bg-image('special_1')
+          .text
+            vertical-align: top
+            font-size: 10px
+            line-height: 12px
       .support-count
         position: absolute
         right: 12px
@@ -149,24 +156,26 @@
         .icon-keyboard_arrow_right
           font-size: 10px
     .bulletin-wrapper
-      height: 28px
-      line-height: 28px
-      padding: 0 22px 0 12px
-      white-space: nowrap
-      overflow: hidden
-      text-overflow: ellipsis
-      font-size: 0
-      background: rgba(7, 17, 27, 0.2)
+      height 28px
+      line-height 28px
+      padding 0 22px 0 12px
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
+      background rgba(7,17,27,0.2)
       .bulletin-title
-        display: inline-block
-        width: 22px
-        height: 12px
+        display inline-block
+        vertical-align: top
+        margin-top: 8px
+        width 22px
+        height 12px
         bg-image('bulletin')
-        background-size: 22px 12px
-        background-repeat: no-repeat
-      .bulletin-text
-        margin: 0 4px
-        font-size: 10px
+        background-size 100% 100%
+        background-repeat no-repeat
+      .bulletin-text    
+        vertical-align: top
+        margin: 0 4px 
+        font-size 10px
     .background
       position: absolute
       top: 0
